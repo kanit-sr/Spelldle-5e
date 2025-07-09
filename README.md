@@ -1,6 +1,3 @@
-# Spelldle-5e
-Guessing 5e Spells Web-game.
-
 # Spelldle 5e
 
 A Wordle-inspired guessing game for D&D 5e spells.  
