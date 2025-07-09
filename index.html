@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spelldle 5e</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="popup" class="popup" style="display:none;"></div>
+  <div id="correct-popup" class="correct-popup" style="display:none;">
+    <div class="correct-popup-content">
+      <div class="correct-emoji">🎉</div>
+      <div id="correct-popup-msg"></div>
+      <div id="correct-popup-detail" style="margin-top:18px;text-align:left;"></div>
+      <button id="close-correct-popup">OK</button>
+    </div>
+  </div>
+  <h1>Spelldle 5e</h1>
+  <div id="tries">Tries: <span id="current">0</span> / 10</div>
+  <div id="headers">
+    <div class="cell header">School</div>
+    <div class="cell header">Level</div>
+    <div class="cell header">Range</div>
+    <div class="cell header">Duration</div>
+    <div class="cell header">Components</div>
+    <div class="cell header">Class</div>
+  </div>
+  <div id="board"></div>
+  <div id="input-area">
+    <input type="text" id="spell-input" placeholder="Enter spell name..." list="spell-list">
+    <datalist id="spell-list"></datalist>
+    <button id="guess-btn">Guess</button>
+  </div>
+  <div id="message"></div>
+
+  <ul id="legend">
+    <li><strong>School</strong> (🟩 exact / 🟥 wrong)</li>
+    <li><strong>Level, Range, Duration</strong> (🟩 exact / 🟦 too high / 🟧 too low)</li>
+    <li><strong>Components</strong> (V✅ S❌ M✅)</li>
+    <li><strong>Material</strong> (🟩 contains / 🟥 no)</li>
+    <li><strong>Class</strong> (🟩 match / 🟥 no match)</li>
+  </ul>
+
+  <div id="reference">
+    <h2>All Spells</h2>
+    <div id="filters">
+      <label>
+        <span>School:</span>
+        <select id="filter-school">
+          <option value="">All</option>
+        </select>
+      </label>
+      <label>
+        <span>Level:</span>
+        <select id="filter-level">
+          <option value="">All</option>
+        </select>
+      </label>
+      <label>
+        <span>Range:</span>
+        <select id="filter-range">
+          <option value="">All</option>
+          <option value="self">Self</option>
+          <option value="touch">Touch</option>
+          <option value="short">1–30 ft</option>
+          <option value="medium">31–120 ft</option>
+          <option value="long">121+ ft</option>
+          <option value="special">Special/Other</option>
+        </select>
+      </label>
+      <label>
+        <span>Duration:</span>
+        <select id="filter-duration">
+          <option value="">All</option>
+          <option value="instant">Instant</option>
+          <option value="round">1 round or less</option>
+          <option value="minute">1 minute to 59 minutes</option>
+          <option value="hour">1 hour or more</option>
+          <option value="special">Special/Other</option>
+        </select>
+      </label>
+      <label style="min-width:180px;">
+        <span>Class:</span>
+        <div id="filter-class-chips" class="chip-select"></div>
+      </label>
+      <label>
+        <span>Components:</span>
+        <div id="filter-components" class="comp-filter-chips">
+          <div class="comp-chip-toggle" data-comp="V">V</div>
+          <div class="comp-chip-toggle" data-comp="S">S</div>
+          <div class="comp-chip-toggle" data-comp="M">M</div>
+        </div>
+      </label>
+    </div>
+    <ul id="all-spells"></ul>
+  </div>
+
+  <div id="admin-secret" style="display:none; margin-bottom:10px; color:#ffb;">
+    <b>Secret Spell:</b> <span id="secret-spell"></span>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="reference.js"></script>
+</body>
+</html>
